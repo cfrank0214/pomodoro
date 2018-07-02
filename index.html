@@ -33,67 +33,9 @@
     <div id="clock">
 
     </div>
+    <script src='./pomodoro.js'></script>
     <script>
-
-        let secondsRemaining = 5;
-        const tickDelay = 1000;
-        let clock;
-
-        function tick() {
-            secondsRemaining -= 1;
-            if (secondsRemaining >= 0) {
-                updateClock();
-                setTimeout(tick, tickDelay);
-            } else {
-                play_single_sound()
-
-            }
-        }
-
-        function start() {
-            setTimeout(tick, tickDelay);
-        }
-
-        function play_single_sound() {
-            document.getElementById('timeup').play();
-        }
-
-        function updateClock() {
-            clock = document.getElementById('clock');
-            var countDownFormated = '';
-            var mins = Math.floor(secondsRemaining / 60);
-            var secs = secondsRemaining % 60;
-
-            countDownFormated += "" + mins + ":" + (secs < 10 ? "0" : "");
-            countDownFormated += "" + secs;
-            clock.textContent = countDownFormated;
-
-            if (secondsRemaining === 0) {
-
-                toggleBlink();
-            }
-
-        }
-        function toggleBlink() {
-            if (secondsRemaining >= 0) {
-                console.log(secondsRemaining);
-                setInterval(function () {
-                clock.style.color = (clock.style.color == 'white' ? 'red' : 'white');
-            }, 500);
-            } else {
-                clock.style.color = 'black';
-            }
-            
-        }
-
-        updateClock();
-
-function reset() {
-    toggleBlink();
-    secondsRemaining = 5;
-     
-}
-
+        updateClock()
     </script>
 </body>
 
