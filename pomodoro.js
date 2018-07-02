@@ -6,32 +6,42 @@ let timer;
 
 function start() {
     document.getElementById("reset").disabled = false;
+    document.getElementById("pause").disabled = false;
     tick();
 }
 
 function tick() {
     secondsRemaining -= 1;
-    
     if (secondsRemaining >= 0) {
         updateClock();
-        timer = setTimeout(tick, tickDelay);
+        timer = updatedTimer();
+        
     } else {
         play_single_sound()
-       blink_flag = setInterval(blink, 1000);
-       document.getElementById("pause").disabled = true;
+        blink_flag = setInterval(blink, 1000);
+        document.getElementById("pause").disabled = true;
     }
 }
 
-function blink () {
+function updatedTimer() {
+    return setTimeout(function () {
+        var millis = Date.now() - start;
+        tick();
+        return Math.floor(millis / 1000);
+        // expected output : seconds elapsed = 1
+    }, 1000);
+}
+
+function blink() {
     clock.style.color = (clock.style.color == 'white' ? 'red' : 'white');
 
 }
 
 function updateClock() {
     clock = document.getElementById('clock');
-    var countDownFormated = '';
-    var mins = Math.floor(secondsRemaining / 60);
-    var secs = secondsRemaining % 60;
+    let countDownFormated = '';
+    let mins = Math.floor(secondsRemaining / 60);
+    let secs = secondsRemaining % 60;
 
     countDownFormated += "" + mins + ":" + (secs < 10 ? "0" : "");
     countDownFormated += "" + secs;
@@ -51,7 +61,7 @@ function reset() {
 }
 
 
-function pause(){
+function pause() {
     clearTimeout(timer);
 
 }
