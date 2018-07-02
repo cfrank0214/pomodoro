@@ -25,8 +25,10 @@
 
     <div id="buttons">
         <button id='start' onclick='start()'>Start</button>
+        <button id='reset' onclick='reset()'>Reset</button>
 
-        [Pause] [Reset]
+        [Pause] 
+      
     </div>
     <div id="clock">
 
@@ -35,6 +37,7 @@
 
         let secondsRemaining = 5;
         const tickDelay = 1000;
+        let clock;
 
         function tick() {
             secondsRemaining -= 1;
@@ -56,7 +59,7 @@
         }
 
         function updateClock() {
-            let clock = document.getElementById('clock');
+            clock = document.getElementById('clock');
             var countDownFormated = '';
             var mins = Math.floor(secondsRemaining / 60);
             var secs = secondsRemaining % 60;
@@ -66,19 +69,30 @@
             clock.textContent = countDownFormated;
 
             if (secondsRemaining === 0) {
-                clock.setAttribute("style", "color:red");
 
-                blink(clock);
+                toggleBlink();
             }
 
         }
-        function blink(f) {
-            setInterval(function () {
-                f.style.display = (f.style.display == 'none' ? '' : 'none');
+        function toggleBlink() {
+            if (secondsRemaining >= 0) {
+                console.log(secondsRemaining);
+                setInterval(function () {
+                clock.style.color = (clock.style.color == 'white' ? 'red' : 'white');
             }, 500);
+            } else {
+                clock.style.color = 'black';
+            }
+            
         }
 
         updateClock();
+
+function reset() {
+    toggleBlink();
+    secondsRemaining = 5;
+     
+}
 
     </script>
 </body>
