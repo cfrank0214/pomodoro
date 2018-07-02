@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
 
     <style>
-    #tomato {
-        font-size: 180px;
-    }
+        #tomato {
+            font-size: 180px;
+        }
     </style>
 </head>
 
@@ -16,54 +17,64 @@
     </div>
 
     <div id="clock">
-        
+
+    </div>
+    <div>
+        <audio id="timeup" src="./media/zapsplat_multimedia_male_voice_processed_says_you_win_001_21572.mp3">
+        </audio>
     </div>
 
+
     <div id="buttons">
-        <button id='start' onclick='start()'>Start</button> 
-        
+        <button id='start' onclick='start()'>Start</button>
+
         [Pause] [Reset]
     </div>
 
     <script>
 
-let secondsRemaining = 5;
-const tickDelay = 1000;
+        let secondsRemaining = 5;
+        const tickDelay = 1000;
 
-function tick() {
-    secondsRemaining -= 1;
-    
-    updateClock();
+        function tick() {
+            secondsRemaining -= 1;
+            if (secondsRemaining >= 0) {
+                updateClock();
+                setTimeout(tick, tickDelay);
+            } else {
+                play_single_sound()
 
-    if (secondsRemaining > 0) {
-        setTimeout(tick, tickDelay);
-    }
-}
+            }
+        }
 
-function start() {
-    setTimeout(tick, tickDelay);
-}
+        function start() {
+            setTimeout(tick, tickDelay);
+        }
 
-function updateClock() {
-    let clock = document.getElementById('clock');
-    // todo: formatting
-    clock.textContent = secondsRemaining;
-}
+        function play_single_sound() {
+            document.getElementById('timeup').play();
+        }
+
+        function updateClock() {
+            let clock = document.getElementById('clock');
+            var countDownFormated = '';
+            var mins = Math.floor(secondsRemaining / 60);
+            var secs = secondsRemaining % 60;
+
+            countDownFormated += "" + mins + ":" + (secs < 10 ? "0" : "");
+            countDownFormated += "" + secs;
+            clock.textContent = countDownFormated;
+
+            if (secondsRemaining === 0) {
+                clock.setAttribute("style","color:red");
+            }
+
+        }
 
 
-updateClock();
+        updateClock();
 
     </script>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
