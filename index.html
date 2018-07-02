@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+    #tomato {
+        font-size: 180px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="tomato">
+        🍅
+    </div>
+
+    <div id="clock">
+        
+    </div>
+
+    <div id="buttons">
+        <button id='start' onclick='start()'>Start</button> 
+        
+        [Pause] [Reset]
+    </div>
+
+    <script>
+
+let secondsRemaining = 5;
+const tickDelay = 1000;
+
+function tick() {
+    secondsRemaining -= 1;
+    
+    updateClock();
+
+    if (secondsRemaining > 0) {
+        setTimeout(tick, tickDelay);
+    }
+}
+
+function start() {
+    setTimeout(tick, tickDelay);
+}
+
+function updateClock() {
+    let clock = document.getElementById('clock');
+    // todo: formatting
+    clock.textContent = secondsRemaining;
+}
+
+
+updateClock();
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
