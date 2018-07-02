@@ -1,10 +1,11 @@
-let secondsRemaining = 5;
+let secondsRemaining = 10;
 const tickDelay = 1000;
 let clock;
-let blinik_flag;
+let blink_flag;
+let timer;
 
 function start() {
-    setTimeout(tick, tickDelay);
+    tick();
 }
 
 function tick() {
@@ -12,10 +13,10 @@ function tick() {
     
     if (secondsRemaining >= 0) {
         updateClock();
-        setTimeout(tick, tickDelay);
+        timer = setTimeout(tick, tickDelay);
     } else {
         play_single_sound()
-       blinik_flag = setInterval(blink, 1000);
+       blink_flag = setInterval(blink, 1000);
     }
 }
 
@@ -41,8 +42,14 @@ function play_single_sound() {
 
 
 function reset() {
-    clearInterval(blinik_flag)
+    clearInterval(blink_flag)
     clock.style.color = 'black';
-    secondsRemaining = 5;
+    secondsRemaining = 10;
     updateClock();
+}
+
+
+function pause(){
+    clearTimeout(timer);
+
 }
