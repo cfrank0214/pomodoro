@@ -5,6 +5,7 @@ let blink_flag;
 let timer;
 
 function start() {
+    document.getElementById("reset").disabled = false;
     tick();
 }
 
@@ -17,6 +18,7 @@ function tick() {
     } else {
         play_single_sound()
        blink_flag = setInterval(blink, 1000);
+       document.getElementById("pause").disabled = true;
     }
 }
 
