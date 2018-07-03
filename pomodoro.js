@@ -1,4 +1,4 @@
-let secondsRemaining = 10;
+let secondsRemaining = 1200;
 const tickDelay = 1000;
 let clock;
 let blink_flag;
@@ -56,7 +56,7 @@ function play_single_sound() {
 function reset() {
     clearInterval(blink_flag)
     clock.setAttribute("style", "animation: none")
-    secondsRemaining = 10;
+    secondsRemaining = 1200;
     updateClock();
 }
 
