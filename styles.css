@@ -1,0 +1,8 @@
+#tomato {
+     font-size: 120px;
+    }
+
+    @keyframes blinker {
+        from {color: red;}
+        to {color: white;}
+    }

@@ -18,7 +18,7 @@ function tick() {
         
     } else {
         play_single_sound()
-        blink_flag = setInterval(blink, 1000);
+        blink()
         document.getElementById("pause").disabled = true;
     }
 }
@@ -33,7 +33,7 @@ function updatedTimer() {
 }
 
 function blink() {
-    clock.style.color = (clock.style.color == 'white' ? 'red' : 'white');
+    clock.setAttribute("style", "animation: blinker 1s ease infinite")
 
 }
 
@@ -55,7 +55,7 @@ function play_single_sound() {
 
 function reset() {
     clearInterval(blink_flag)
-    clock.style.color = 'black';
+    clock.setAttribute("style", "animation: none")
     secondsRemaining = 10;
     updateClock();
 }
