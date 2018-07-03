@@ -4,13 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
 </head>
 
 <body>
+    <h1>Pomodoro Timer</h1>
     <div id="tomato">
-        🍅
+        <img src="images/tomatoOnbarnboard.jpeg">
     </div>
 
+    <div id="clock">
+        
+    </div>
     
     <div>
         <audio id="timeup" src="./media/zapsplat_multimedia_male_voice_processed_says_you_win_001_21572.mp3">
@@ -20,14 +25,16 @@
 
     <div id="buttons">
         <button id='start' onclick='start()'>Start</button>
+        &nbsp;
+        &nbsp;
         <button disabled id='reset' onclick='reset()'>Reset</button>
+        &nbsp;
+        &nbsp;
         <button id='pause' onclick='pause()'>Pause</button>
         
       
     </div>
-    <div id="clock">
-
-    </div>
+    
     <script src='./pomodoro.js'></script>
     <script>
         updateClock()

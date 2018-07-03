@@ -15,7 +15,7 @@ function tick() {
     if (secondsRemaining >= 0) {
         updateClock();
         timer = updatedTimer();
-        
+
     } else {
         play_single_sound()
         blink()

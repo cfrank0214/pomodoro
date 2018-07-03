@@ -1,8 +1,48 @@
+
+body h1 {
+     font-family: 'Rock Salt', cursive;
+     font-size: 60px;
+     display: flex;
+     justify-content: center;
+}
 #tomato {
-     font-size: 120px;
+     display: flex;
+     justify-content: center
     }
 
     @keyframes blinker {
-        from {color: red;}
+        from {color:#C20E19;}
         to {color: white;}
+    }
+
+    #clock {
+        font-family: 'Rock Salt', cursive;
+        font-size: 50px;
+        display: flex;
+        justify-content: center
+       }
+
+    #buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 2em;
+    }
+
+    #start{
+        font-family: 'Rock Salt', cursive;
+        border-radius: 20px;
+        border: 1px solid black;
+    }
+
+    #reset {
+        font-family: 'Rock Salt', cursive;
+        border-radius: 20px;
+        border: 1px solid black;
+    }
+
+    #pause{
+        font-family: 'Rock Salt', cursive;
+        border-radius: 20px;
+        border: 1px solid black;
     }
